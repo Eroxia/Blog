@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog<%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  	<header>
+  		<h1><%= title %></h1>
+  	</header>
+    <span> <form action="/search" method="GET"><input type="text" name="keyword" 
+    placeholder="SEARCH" class="search"/></form></span>
+  	<nav>
+  		<span><a title="home" href="/">home</a></span>
+      <span><a title="filing" href="/archive"> archive </a></span>
+      <span><a title="tag"  href="/tags">tags</a></span>
+      <span><a title="link"  href="/links">linls</span>
+      <% if (user) { %>
+        <span><a title="upload"   href="upload"> upload </a></span>
+        <span><a title="report"   href="/post">  post </a></span>  
+        <span><a title="logout"   href="/logout"> logout </a></span>
+      <% } else { %>
+  	  	<span><a title="login"    href="/login"> login </a></span>
+  		  <span><a title="register" href="/reg">register </a></span>
+  	  <% } %>
+    </nav>
+
+
+  <article>
+  <% if( success ) { %>
+  <div> <%= success %> </div>
+  <% } %>
+  <% if( error ) { %>
+  <div> <%= error %></div>
+  <% } %>

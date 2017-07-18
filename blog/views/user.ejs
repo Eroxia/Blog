@@ -1,0 +1,25 @@
+<%- include header %>
+
+<% posts.forEach( function( post, index ){ %>
+	<p> <h2><a href = "/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>" > <% post.title %> </a> </h2></p>
+	
+<p class = "info">
+    auther: <a href="/u/<%= post.name %>" ><%= post.name %></a>|
+    date: <%= post.time.minute %> |
+    tag: 
+    <% post.tags.forEach( function( tag, index ){ %>
+      <% if( tag ) { %>
+        <a class="tag" href="/tags/<%= tag %>" ><%= tag %></a>
+      <% } %>
+    <% }) %>
+    <p><%- post.post %></p>
+
+    <% if( post.reprint_info.reprint_from ){ %>
+      <br><a href="/u/<%= post.reprint_info.reprint_from.name %>/<%= post.reprint_info.reprint_from.day %>/<%= post.reprint_info.reprint_from.title %>" >origin link</a>
+    <% } %>
+    
+</p>
+
+
+<% }) %>
+<%- include footer %>
